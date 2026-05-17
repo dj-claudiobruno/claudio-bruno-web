@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dj.claudiobruno  | Sonido e Iluminación para Eventos</title>
+  <meta name="description" content="Servicio profesional de sonido, iluminación y DJ para eventos sociales y corporativos. Contactá a Claudio Bruno para hacer de tu evento una noche única." />
+  <style>
+    :root {
+      --bg: #07070a;
+      --surface: #111118;
+      --surface-2: #181824;
+      --text: #f5f5f7;
+      --muted: #b8b8c7;
+      --accent: #20d7ff;
+      --accent-2: #ff3bd4;
+      --gold: #ffd166;
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(32, 215, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(255, 59, 212, 0.18), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 7, 10, 0.76);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand span:first-child {
+      font-size: 1.05rem;
+    }
+
+    .brand span:last-child {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #050508;
+      font-weight: 800;
+      box-shadow: 0 14px 42px rgba(32, 215, 255, 0.22);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 58px rgba(255, 59, 212, 0.24);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    section { padding: 86px 0; }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(7,7,10,0.88), rgba(7,7,10,0.62));
+      z-index: 1;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.34;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 { line-height: 1.05; margin: 0; letter-spacing: -0.055em; }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.9rem);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+      max-width: 660px;
+      margin: 24px 0 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 650px;
+    }
+
+    .stat {
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.055);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+      background: var(--surface);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7, 7, 10, 0.82), transparent 42%);
+      pointer-events: none;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 680px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .photo-caption strong { display: block; font-size: 1.06rem; }
+    .photo-caption span { color: var(--muted); font-size: 0.92rem; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .service-card,
+    .review-card,
+    .contact-card {
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .service-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .service-card p, .review-card p, .contact-card p { color: var(--muted); margin: 0; }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      background: rgba(32, 215, 255, 0.12);
+      border: 1px solid rgba(32, 215, 255, 0.24);
+      font-size: 1.35rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .client {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .client strong { display: block; }
+    .client span { color: var(--muted); font-size: 0.88rem; }
+    .stars { color: var(--gold); margin-bottom: 10px; letter-spacing: 1px; }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-cta {
+      padding: 36px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(32, 215, 255, 0.18), rgba(255, 59, 212, 0.14)),
+        var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      display: block;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.26);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 15px 16px;
+      font: inherit;
+      outline: none;
+    }
+
+    textarea { min-height: 128px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { border-color: rgba(32, 215, 255, 0.72); }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 12px;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .links a:not(.btn) { display: none; }
+      .hero-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .hero-card img { height: 560px; }
+      .services, .reviews-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 62px 0; }
+      .hero { min-height: auto; padding-top: 28px; }
+      .hero-card img { height: 500px; }
+      .btn { width: 100%; }
+      .contact-item { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span>Claudio Bruno DJ</span>
+        <span>Sonido & Iluminación</span>
+      </a>
+      <nav class="links" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn" href="https://wa.me/5491163755678?text=Hola%20Claudio%2C%20quiero%20consultar%20por%20sonido%20e%20iluminaci%C3%B3n%20para%20un%20evento." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="_357037806.mp4" type="video/mp4">
+      </video>
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Eventos sociales y corporativos</div>
+          <h1>El sonido perfecto para una noche única.</h1>
+          <p class="lead">Servicio profesional de DJ, sonido e iluminación para casamientos, cumpleaños, fiestas privadas, eventos empresariales y celebraciones especiales.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://wa.me/5491163755678?text=Hola%20Claudio%2C%20quiero%20pedir%20una%20cotizaci%C3%B3n%20para%20mi%20evento." target="_blank" rel="noopener">Pedir cotización</a>
+            <a class="btn secondary" href="https://www.instagram.com/dj.claudiobruno/" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+          <div class="stats" aria-label="Características del servicio">
+            <div class="stat"><strong>DJ + sonido</strong><span>Musicalización profesional para cada momento.</span></div>
+            <div class="stat"><strong>Iluminación</strong><span>Ambientación visual para pista, salón y recepción.</span></div>
+            <div class="stat"><strong>Eventos</strong><span>Sociales, corporativos, privados y empresariales.</span></div>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Claudio Bruno trabajando como DJ en un evento">
+          <img src="Screenshot_20260516-154955~2.png" alt="Claudio Bruno DJ trabajando en una fiesta con consola, auriculares, sonido e iluminación" />
+          <div class="photo-caption">
+            <strong>Claudio Bruno en vivo</strong>
+            <span>Experiencia, técnica y clima de fiesta para que el evento fluya de principio a fin.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Qué incluye</div>
+            <h2>Todo lo necesario para que tu evento suene y se vea profesional.</h2>
+          </div>
+          <p>La propuesta se adapta al tipo de evento, cantidad de invitados, espacio, horarios y estilo musical deseado.</p>
+        </div>
+        <div class="services">
+          <article class="service-card">
+            <div class="icon">🎧</div>
+            <h3>DJ para eventos</h3>
+            <p>Musicalización personalizada, lectura de pista y selección musical para mantener la energía correcta en cada momento.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🔊</div>
+            <h3>Sonido profesional</h3>
+            <p>Equipamiento acorde al salón, cantidad de personas y formato del evento, con configuración clara y prolija.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">✨</div>
+            <h3>Iluminación ambiental</h3>
+            <p>Luces para pista, ambientación y momentos especiales, generando una experiencia visual más completa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resenas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Clientes</div>
+            <h2>Reseñas de quienes ya confiaron en el servicio.</h2>
+          </div>
+          <p>Estos textos e imágenes son de ejemplo. Reemplazalos por reseñas reales, capturas de WhatsApp o fotos autorizadas de clientes.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="client">
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Foto de clienta" />
+              <div><strong>María & Lucas</strong><span>Casamiento</span></div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>“Excelente servicio. La música estuvo perfecta, la pista no paró nunca y la iluminación le dio un clima increíble a la fiesta.”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="client">
+              <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Foto de cliente" />
+              <div><strong>Federico R.</strong><span>Evento corporativo</span></div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>“Muy profesional desde el armado hasta el cierre. Sonido claro, presencia prolija y muy buena adaptación al perfil del evento.”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="client">
+              <img class="avatar" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Foto de clienta" />
+              <div><strong>Camila S.</strong><span>Cumpleaños de 50</span></div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>“Claudio entendió perfecto lo que queríamos. Hubo música para todas las edades y el ambiente quedó espectacular.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container contact-wrap">
+        <div class="contact-cta">
+          <div class="eyebrow">Contacto</div>
+          <h2>Pedí tu cotización y reservá la fecha.</h2>
+          <p class="lead">Contame fecha, lugar, tipo de evento y cantidad aproximada de invitados. Claudio te responde con una propuesta acorde a tu necesidad.</p>
+          <a class="btn" href="https://wa.me/5491163755678?text=Hola%20Claudio%2C%20quiero%20consultar%20disponibilidad%20y%20cotizaci%C3%B3n%20para%20un%20evento.%20Fecha%3A%20%2F%20Lugar%3A%20%2F%20Invitados%3A" target="_blank" rel="noopener">Hablar ahora por WhatsApp</a>
+
+          <div class="contact-list">
+            <a class="contact-item" href="https://wa.me/5491163755678" target="_blank" rel="noopener">
+              <span><strong>WhatsApp</strong>+54 9 11 6375-5678</span>
+              <span>Enviar mensaje →</span>
+            </a>
+            <a class="contact-item" href="https://www.instagram.com/dj.claudiobruno/" target="_blank" rel="noopener">
+              <span><strong>Instagram</strong>@dj.claudiobruno</span>
+              <span>Ver perfil →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Consulta rápida</h3>
+          <p style="margin: 10px 0 20px;">Completá estos datos y usá el botón para enviar la consulta por WhatsApp.</p>
+          <form onsubmit="sendWhatsApp(event)">
+            <input id="nombre" type="text" placeholder="Tu nombre" required />
+            <input id="fecha" type="text" placeholder="Fecha del evento" />
+            <select id="tipo">
+              <option value="Evento social">Evento social</option>
+              <option value="Evento corporativo">Evento corporativo</option>
+              <option value="Casamiento">Casamiento</option>
+              <option value="Cumpleaños">Cumpleaños</option>
+              <option value="Fiesta privada">Fiesta privada</option>
+            </select>
+            <input id="lugar" type="text" placeholder="Lugar / zona" />
+            <textarea id="mensaje" placeholder="Contanos cantidad de invitados, horario y cualquier detalle importante"></textarea>
+            <button class="btn" type="submit">Enviar consulta por WhatsApp</button>
+          </form>
+          <div class="form-note">Este formulario no guarda datos: abre WhatsApp con el mensaje listo para enviar.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Claudio Bruno DJ. Sonido e iluminación para eventos.</span>
+      <span>Instagram: @dj.claudiobruno · WhatsApp: 11 6375-5678</span>
+    </div>
+  </footer>
+
+  <script>
+    function sendWhatsApp(event) {
+      event.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const fecha = document.getElementById('fecha').value.trim();
+      const tipo = document.getElementById('tipo').value;
+      const lugar = document.getElementById('lugar').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      const text = `Hola Claudio, quiero consultar por sonido e iluminación para un evento.\n\nNombre: ${nombre}\nTipo de evento: ${tipo}\nFecha: ${fecha || 'A confirmar'}\nLugar/Zona: ${lugar || 'A confirmar'}\nDetalles: ${mensaje || 'Quiero recibir información y cotización.'}`;
+      const url = `https://wa.me/5491163755678?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank', 'noopener');
+    }
+  </script>
+</body>
+</html>
